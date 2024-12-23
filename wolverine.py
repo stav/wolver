@@ -23,18 +23,18 @@ def generate_chart(rows):
         .properties(width=400, height=200)
     )
 
-    pltr['expected'] = expected_values
+    pltr["expected"] = expected_values
 
     chart += (
         alt.Chart(pltr)
-        .mark_line(color='red')
+        .mark_line(color="red")
         .encode(y="expected", x=alt.X("x", sort=None))
     )
     return altair2fasthtml(chart)
 
 
 def Wolverine():
-    url = 'http://www.sca.isr.umich.edu/files/tbciccice.csv'
+    url = "http://www.sca.isr.umich.edu/files/tbciccice.csv"
     response = requests.get(url)
     rows = []
 
@@ -58,6 +58,7 @@ def Wolverine():
             print("Invalid data:", row)
 
     card = Card(Pre(rows), header=A(url, href=url))
-    chart = Div(generate_chart(rows))
+    chart = Div(generate_chart(rows), cls="wlv-chart")
+    title = "Michigan Consumer Sentiment Index"
 
-    return Div(card, chart)
+    return Titled(title, card), chart
