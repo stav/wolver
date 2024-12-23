@@ -33,7 +33,7 @@ def generate_chart(rows):
     return altair2fasthtml(chart)
 
 
-def Wolverine():
+def Components():
     url = "http://www.sca.isr.umich.edu/files/tbciccice.csv"
     response = requests.get(url)
     rows = []
@@ -57,8 +57,23 @@ def Wolverine():
         except (AssertionError, ValueError):
             print("Invalid data:", row)
 
-    card = Card(Pre(rows), header=A(url, href=url))
     chart = Div(generate_chart(rows), cls="wlv-chart")
-    title = "Michigan Consumer Sentiment Index"
 
-    return Titled(title, card), chart
+    card = Card(
+        Pre(rows),
+        style="display: none",
+        header="Components of the Index of Consumer Sentiment",
+        footer=A(url, href=url),
+    )
+
+    toggle = """
+        const el = document.querySelector('#Components article');
+        el.style.display = el.style.display === 'none' ? 'block' : 'none';
+    """
+
+    return Div(card, chart, On(code=toggle), id="Components"),
+
+
+def Wolverine():
+    title = "Michigan Consumer Sentiment Index"
+    return Titled(title), Components()
