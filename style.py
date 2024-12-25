@@ -5,7 +5,8 @@ from fasthtml.common import *
 
 styles = Style(
     """
-    .wlv-chart { align-items: center; display: flex; flex-direction: column; }
+    .wlv-container { display: inline flow-root; }
 
+    .wlv-chart { align-items: center; display: contents; }
 """
 )
