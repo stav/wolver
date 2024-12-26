@@ -28,7 +28,6 @@ def Components():
                 f"{float(expected):,.1f}",
             )
             rows.append(data)
-            print(data)
 
         except (AssertionError, ValueError):
             print("Invalid data:", row)

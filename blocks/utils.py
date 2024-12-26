@@ -6,21 +6,21 @@ from fh_altair import altair2fasthtml
 
 def generate_chart(rows, y1, y2):
     months_years = [f"{row[0]} {row[1]}" for row in rows]
-    current_values = [float(row[2]) for row in rows]
-    expected_values = [float(row[3]) for row in rows]
+    y1_values = [float(row[2]) for row in rows]
+    y2_values = [float(row[3]) for row in rows]
 
-    pltr = pd.DataFrame({"x": months_years})
+    data = pd.DataFrame({"x": months_years})
 
-    pltr[y1] = current_values
+    data[y1] = y1_values
     chart = (
-        alt.Chart(pltr)
+        alt.Chart(data)
         .mark_line()
-        .encode(y=y1, x=alt.X("x", sort=None))
+        .encode(y=y1, x=alt.X("x", sort=None, title="Month"))
         .properties(width=400, height=200)
     )
 
-    pltr[y2] = expected_values
+    data[y2] = y2_values
     chart += (
-        alt.Chart(pltr).mark_line(color="red").encode(y=y2, x=alt.X("x", sort=None))
+        alt.Chart(data).mark_line(color="red").encode(y=y2, x=alt.X("x", sort=None))
     )
     return altair2fasthtml(chart)

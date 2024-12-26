@@ -1,7 +1,13 @@
 {
   "cSpell.words": [
     "fasthtml",
-    "hdrs",
-    "pltr"
+    "hdrs"
+  ],
+  "cSpell.ignorePaths": [
+    "venv/**",
+    ".vscode/settings.json",
+    "requirements.txt",
+    ".gitignore",
+    "README",
   ]
 }

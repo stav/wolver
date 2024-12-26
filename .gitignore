@@ -116,6 +116,6 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-# Fasthtml
-
+# Project
 .sesskey
+env
