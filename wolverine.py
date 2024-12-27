@@ -5,4 +5,8 @@ from blocks import Components, Prices
 
 def Wolverine():
     title = "Michigan Consumer Sentiment Index"
-    return Titled(title), Components(), Prices()
+    return Titled(
+        title,
+        Components(),
+        Prices(),
+    )

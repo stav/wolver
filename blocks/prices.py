@@ -46,4 +46,13 @@ def Prices():
         el.style.display = el.style.display === 'none' ? 'block' : 'none';
     """
 
-    return Div(card, chart, On(code=toggle), id="Prices", cls="wlv-container")
+    return Card(
+        Div(
+            card,
+            chart,
+            On(code=toggle),
+            id="Prices",
+        ),
+        header=Button("Prices", onclick=toggle),
+        cls="wlv-container",
+    )

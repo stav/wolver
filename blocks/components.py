@@ -46,4 +46,13 @@ def Components():
         el.style.display = el.style.display === 'none' ? 'block' : 'none';
     """
 
-    return Div(card, chart, On(code=toggle), id="Components", cls="wlv-container")
+    return Card(
+        Div(
+            card,
+            chart,
+            On(code=toggle),
+            id="Components",
+        ),
+        header=Button("Components", onclick=toggle),
+        cls="wlv-container",
+    )
