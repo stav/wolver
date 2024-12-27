@@ -1,10 +1,9 @@
-# ruff: noqa: F405, F403
-
 import csv
 import requests
 
 from io import StringIO
-from fasthtml.common import *
+
+from fasthtml.common import A, Card, Pre
 
 from blocks.utils import generate_chart
 
@@ -32,7 +31,7 @@ def Prices():
         except (AssertionError, ValueError):
             print("Invalid data:", row)
 
-    chart = Div(generate_chart(rows, "Next Year", "Next 5 Years"), cls="wlv-chart")
+    chart = generate_chart(rows, "Next Year", "Next 5 Years")
 
     card = Card(
         Pre(rows),
@@ -41,18 +40,4 @@ def Prices():
         footer=A(url, href=url),
     )
 
-    toggle = """
-        const el = document.querySelector('#Prices article');
-        el.style.display = el.style.display === 'none' ? 'block' : 'none';
-    """
-
-    return Card(
-        Div(
-            card,
-            chart,
-            On(code=toggle),
-            id="Prices",
-        ),
-        header=Button("Prices", onclick=toggle),
-        cls="wlv-container",
-    )
+    return "Prices", card, chart

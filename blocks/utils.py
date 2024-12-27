@@ -1,6 +1,7 @@
 import pandas as pd
 import altair as alt
 
+from fasthtml.common import Card, Div, On, Button
 from fh_altair import altair2fasthtml
 
 
@@ -25,4 +26,22 @@ def generate_chart(rows, y1, y2=None):
             alt.Chart(data).mark_line(color="red").encode(y=y2, x=alt.X("x", sort=None))
         )
 
-    return altair2fasthtml(chart)
+    return Div(altair2fasthtml(chart), cls="wlv-chart")
+
+
+def wrap(title, card, chart):
+    toggle = f"""
+        const el = document.querySelector("#{title} article");
+        el.style.display = el.style.display === 'none' ? 'block' : 'none';
+    """
+
+    return Card(
+        Div(
+            card,
+            chart,
+            On(code=toggle),
+            id=title,
+        ),
+        header=Button(title, onclick=toggle),
+        cls="wlv-container",
+    )

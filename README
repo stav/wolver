@@ -190,3 +190,10 @@ https://fasthtml-docs.demo.clace.io/tutorials/e2e.html
 https://fasthtml-docs.demo.clace.io/tutorials/quickstart_for_web_devs.html#a-minimal-charting-application
 https://gallery.fastht.ml/split/dynamic_user_interface_(htmx)/show_hide
 http://www.sca.isr.umich.edu/tables.html
+
+
+
+
+ToDo:
+
+- [ ] Check for non 2xx resonse codes

@@ -1,10 +1,9 @@
-# ruff: noqa: F405, F403
-
 import csv
 import requests
 
 from io import StringIO
-from fasthtml.common import *
+
+from fasthtml.common import A, Card, Pre
 
 from blocks.utils import generate_chart
 
@@ -32,7 +31,7 @@ def Components():
         except (AssertionError, ValueError):
             print("Invalid data:", row)
 
-    chart = Div(generate_chart(rows, "Current", "Expected"), cls="wlv-chart")
+    chart = generate_chart(rows, "Current", "Expected")
 
     card = Card(
         Pre(rows),
@@ -41,18 +40,4 @@ def Components():
         footer=A(url, href=url),
     )
 
-    toggle = """
-        const el = document.querySelector('#Components article');
-        el.style.display = el.style.display === 'none' ? 'block' : 'none';
-    """
-
-    return Card(
-        Div(
-            card,
-            chart,
-            On(code=toggle),
-            id="Components",
-        ),
-        header=Button("Components", onclick=toggle),
-        cls="wlv-container",
-    )
+    return "Components", card, chart

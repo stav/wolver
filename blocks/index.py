@@ -1,10 +1,9 @@
-# ruff: noqa: F405, F403
-
 import csv
 import requests
 
 from io import StringIO
-from fasthtml.common import *
+
+from fasthtml.common import A, Card, Pre
 
 from blocks.utils import generate_chart
 
@@ -31,7 +30,7 @@ def Index():
         except (AssertionError, ValueError):
             print("Invalid data:", row)
 
-    chart = Div(generate_chart(rows, "Index"), cls="wlv-chart")
+    chart = generate_chart(rows, "Index")
 
     card = Card(
         Pre(rows),
@@ -40,18 +39,4 @@ def Index():
         footer=A(url, href=url),
     )
 
-    toggle = """
-        const el = document.querySelector('#Index article');
-        el.style.display = el.style.display === 'none' ? 'block' : 'none';
-    """
-
-    return Card(
-        Div(
-            card,
-            chart,
-            On(code=toggle),
-            id="Index",
-        ),
-        header=Button("Index", onclick=toggle),
-        cls="wlv-container",
-    )
+    return "Index", card, chart
