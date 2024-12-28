@@ -1,7 +1,7 @@
 import pandas as pd
 import altair as alt
 
-from fasthtml.common import Card, Div, On, Button
+from fasthtml.common import A, Button, Card, Div, On, Pre
 from fh_altair import altair2fasthtml
 
 
@@ -27,6 +27,21 @@ def generate_chart(rows, y1, y2=None):
         )
 
     return Div(altair2fasthtml(chart), cls="wlv-chart")
+
+
+def render(url, series, title, header, func):
+    rows = list(func(url))
+
+    chart = generate_chart(rows, *series)
+
+    card = Card(
+        Pre(rows),
+        style="display: none",
+        header=header,
+        footer=A(url, href=url),
+    )
+
+    return title, card, chart
 
 
 def wrap(title, card, chart):
