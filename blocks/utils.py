@@ -58,5 +58,4 @@ def wrap(title, card, chart):
             id=title,
         ),
         header=Button(title, onclick=toggle),
-        cls="wlv-container",
     )

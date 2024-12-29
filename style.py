@@ -15,5 +15,10 @@ styles = Style(
     }
 
     .wlv-chart { align-items: center; display: contents; }
+
+    .wlv-close {
+        display: none;
+        margin-left: 1em;
+    }
 """
 )
