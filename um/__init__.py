@@ -1,5 +1,5 @@
-from .ics import index_block
-from .cmp import components_block
-from .prc import prices_block
+from .blocks.ics import index_block
+from .blocks.cmp import components_block
+from .blocks.prc import prices_block
 
 __all__ = ["index_block", "components_block", "prices_block"]
