@@ -50,12 +50,9 @@ def wrap(title, card, chart):
         el.style.display = el.style.display === 'none' ? 'block' : 'none';
     """
 
-    return Card(
-        Div(
-            card,
-            chart,
-            On(code=toggle),
-            id=title,
-        ),
-        header=Button(title, onclick=toggle),
+    return Div(
+        card,
+        chart,
+        On(code=toggle),
+        id=title,
     )
