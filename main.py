@@ -14,6 +14,7 @@ def index():
             "The Mighty Index of Indexes",
             um.index_block(rt),
             um.components_block(rt),
+            um.prices_block(rt),
         ),
     )
 
