@@ -2,7 +2,7 @@
 from fasthtml.common import *
 from fh_altair import altair_headers
 
-from blocks import Index, Components, Prices, wrap
+from um import Index, Components, Prices, wrap
 from style import styles
 
 app, rt = fast_app(live=True, debug=True, hdrs=[styles, altair_headers])
