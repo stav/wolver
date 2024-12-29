@@ -7,6 +7,8 @@ from style import styles
 
 app, rt = fast_app(live=True, debug=True, hdrs=[styles, altair_headers])
 
+close_index = "document.getElementById('wlv-index').innerHTML = ''; document.getElementById('wlv-index-close').style.display = 'none';"
+open_index = "document.getElementById('wlv-index-close').style.display = 'inline-block';"
 
 @rt()
 def index():
@@ -16,17 +18,12 @@ def index():
             Div(id="wlv-index"),
             cls="wlv-container",
             header=Div(
-                Button(
-                    "Index",
-                    hx_get="/index",
-                    hx_target="#wlv-index",
-                    onclick="document.querySelector('#wlv-index').style.display = 'block'; document.querySelector('#wlv-close-index').style.display = 'inline-block';",
-                ),
+                Button("Index", hx_get="/index", hx_target="#wlv-index", onclick=open_index),
                 Button(
                     "X",
-                    id="wlv-close-index",
+                    id="wlv-index-close",
                     cls="wlv-close",
-                    onclick="document.querySelector('#wlv-index').style.display = 'none'; document.querySelector('#wlv-close-index').style.display = 'none';",
+                    onclick=close_index,
                 ),
             ),
         ),
