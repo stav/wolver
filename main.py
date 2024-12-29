@@ -23,12 +23,7 @@ def index():
                 cls="wlv-container",
                 header=Div(
                     Button(
-                        Div(
-                            "Index",
-                            hx_get="/first-endpoint",
-                            hx_target="#first-target",
-                            hx_trigger="click",
-                        ),
+                        "Index",
                         hx_get="/index",
                         hx_target="#wlv-index",
                         hx_trigger="click",
@@ -40,20 +35,8 @@ def index():
                         cls="wlv-close",
                         onclick=close_index,
                     ),
-                    # Button("Click me", id="multi-action-button"),
-                    Div(id="first-target"),
-                    # Div(id="second-target"),
                 ),
             ),
-            # Script(
-            #     """
-            #     console.log('index', htmx);
-            #     document.getElementById('multi-action-button').addEventListener('click', function() {
-            #     htmx.ajax('GET', '/first-endpoint', { target: '#first-target' });
-            #     htmx.ajax('GET', '/second-endpoint', { target: '#second-target' });
-            # });
-            #     """
-            # ),
         ),
     )
 
@@ -61,16 +44,6 @@ def index():
 @rt("/index")
 def get():
     return wrap(*Index())
-
-
-@rt("/first-endpoint")
-def get():
-    return Div("First endpoint")
-
-
-@rt("/second-endpoint")
-def get():
-    return Div("Second endpoint")
 
 
 serve()
