@@ -12,7 +12,8 @@ def index():
     return (
         Titled(
             "The Mighty Index of Indexes",
-            um.index(rt),
+            um.index_block(rt),
+            um.components_block(rt),
         ),
     )
 

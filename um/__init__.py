@@ -1,7 +1,4 @@
-# from .components import Components
-# from .prices import Prices
-# from .index import Index
+from .ics import index_block
+from .cmp import components_block
 
-from .ics import index
-
-# __all__ = ["Index", "Components", "Prices", "wrap"]
+__all__ = ["index_block", "components_block"]

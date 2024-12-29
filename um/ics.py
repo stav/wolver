@@ -7,13 +7,13 @@ from .utils import render
 
 url = "http://www.sca.isr.umich.edu/files/tbcics.csv"
 
-close_index = "document.getElementById('wlv-index').innerHTML = ''; document.getElementById('wlv-index-close').style.display = 'none';"
-open_index = (
+close_trigger = "document.getElementById('wlv-index').innerHTML = ''; document.getElementById('wlv-index-close').style.display = 'none';"
+open_trigger = (
     "document.getElementById('wlv-index-close').style.display = 'inline-block';"
 )
 
 
-def index(rt):
+def index_block(rt):
 
     @rt("/index")
     def get():
@@ -25,17 +25,17 @@ def index(rt):
             cls="wlv-container",
             header=Div(
                 Button(
-                    "Index",
+                    "UM Index",
                     hx_get="/index",
                     hx_target="#wlv-index",
                     hx_trigger="click",
-                    onclick=open_index,
+                    onclick=open_trigger,
                 ),
                 Button(
                     "X",
                     id="wlv-index-close",
                     cls="wlv-close",
-                    onclick=close_index,
+                    onclick=close_trigger,
                 ),
             ),
         ),
