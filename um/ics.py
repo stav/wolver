@@ -2,7 +2,8 @@
 from fasthtml.common import *
 
 from .bot import get_rows_format_1
-from .utils import render, wrap
+from .wrap import wrap
+from .utils import render
 
 url = "http://www.sca.isr.umich.edu/files/tbcics.csv"
 

@@ -1,7 +1,7 @@
 import pandas as pd
 import altair as alt
 
-from fasthtml.common import A, Button, Card, Div, On, Pre
+from fasthtml.common import A, Card, Div, On, Pre
 from fh_altair import altair2fasthtml
 
 
@@ -42,17 +42,3 @@ def render(url: str, series: tuple, title: str, header: str, func: callable):
     )
 
     return title, card, chart
-
-
-def wrap(title, card, chart):
-    toggle = f"""
-        const el = document.querySelector("#{title} article");
-        el.style.display = el.style.display === 'none' ? 'block' : 'none';
-    """
-
-    return Div(
-        card,
-        chart,
-        On(code=toggle),
-        id=title,
-    )
