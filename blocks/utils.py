@@ -29,7 +29,7 @@ def generate_chart(rows, y1, y2=None):
     return Div(altair2fasthtml(chart), cls="wlv-chart")
 
 
-def render(url, series, title, header, func):
+def render(url: str, series: tuple, title: str, header: str, func: callable):
     rows = list(func(url))
 
     chart = generate_chart(rows, *series)
