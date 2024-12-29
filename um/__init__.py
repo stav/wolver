@@ -2,6 +2,6 @@
 # from .prices import Prices
 # from .index import Index
 
-from .index import index
+from .ics import index
 
 # __all__ = ["Index", "Components", "Prices", "wrap"]
